@@ -27,6 +27,6 @@ class Solution {
             if (freq[i] > 0)
                 return (char) ('a' + i);
 
-        return 'x';
+        return 'z';
     }
 }
