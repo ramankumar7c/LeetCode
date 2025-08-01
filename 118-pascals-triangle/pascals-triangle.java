@@ -15,7 +15,7 @@ class Solution {
         List<List<Integer>> ans = new ArrayList<>();
         for (int i = 1; i <= numRows; i++)
             ans.add(generateRow(i));
-        
+
         return ans;
     }
 }
