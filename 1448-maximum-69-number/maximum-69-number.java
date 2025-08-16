@@ -1,6 +1,5 @@
 class Solution {
     public int maximum69Number(int num) {
-        int max = num;
         String str = String.valueOf(num);
         char[] ch = str.toCharArray();
 
@@ -10,9 +9,7 @@ class Solution {
                 break;
             }
         }
-        str = new String(ch);
-        max = Integer.parseInt(str);
 
-        return max;
+        return Integer.valueOf(String.valueOf(ch));
     }
 }
