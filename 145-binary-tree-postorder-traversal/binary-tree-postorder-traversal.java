@@ -1,33 +1,67 @@
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- * int val;
- * TreeNode left;
- * TreeNode right;
- * TreeNode() {}
- * TreeNode(int val) { this.val = val; }
- * TreeNode(int val, TreeNode left, TreeNode right) {
- * this.val = val;
- * this.left = left;
- * this.right = right;
- * }
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
  * }
  */
+
+// Recursive
+// class Solution {
+//     public List<Integer> postorderTraversal(TreeNode root) {
+//         List<Integer> result = new ArrayList<>();
+//         postorderHelper(root, result);
+//         return result;
+//     }
+
+//     private void postorderHelper(TreeNode node, List<Integer> result) {
+//         if (node == null)
+//             return;
+
+//         postorderHelper(node.left, result);
+
+//         postorderHelper(node.right, result);
+
+//         result.add(node.val);
+//     }
+// }
+
+// Iterative with 2 Stack
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
-        postorderHelper(root, result);
-        return result;
-    }
+        Stack<TreeNode> st1 = new Stack<>();
+        Stack<TreeNode> st2 = new Stack<>();
+        List<Integer> ans = new ArrayList<>();
 
-    private void postorderHelper(TreeNode node, List<Integer> result) {
-        if (node == null)
-            return;
+        if (root == null)
+            return ans;
 
-        postorderHelper(node.left, result);
+        st1.push(root);
+        while (!st1.isEmpty()) {
+            root = st1.pop();
+            st2.add(root);
+            if (root.left != null)
+                st1.push(root.left);
+            if (root.right != null)
+                st1.push(root.right);
+        }
+        while (!st2.isEmpty())
+            ans.add(st2.pop().val);
 
-        postorderHelper(node.right, result);
-
-        result.add(node.val);
+        return ans;
     }
 }
+
+// class Solution {
+//     public List<Integer> postorderTraversal(TreeNode root) {
+
+//     }
+// }
