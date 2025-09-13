@@ -35,33 +35,55 @@
 // }
 
 // Iterative with 2 Stack
+// class Solution {
+//     public List<Integer> postorderTraversal(TreeNode root) {
+//         Stack<TreeNode> st1 = new Stack<>();
+//         Stack<TreeNode> st2 = new Stack<>();
+//         List<Integer> ans = new ArrayList<>();
+
+//         if (root == null)
+//             return ans;
+
+//         st1.push(root);
+//         while (!st1.isEmpty()) {
+//             root = st1.pop();
+//             st2.add(root);
+//             if (root.left != null)
+//                 st1.push(root.left);
+//             if (root.right != null)
+//                 st1.push(root.right);
+//         }
+//         while (!st2.isEmpty())
+//             ans.add(st2.pop().val);
+
+//         return ans;
+//     }
+// }
+
+// Iterative with 1 Stack
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
-        Stack<TreeNode> st1 = new Stack<>();
-        Stack<TreeNode> st2 = new Stack<>();
         List<Integer> ans = new ArrayList<>();
-
         if (root == null)
             return ans;
 
-        st1.push(root);
-        while (!st1.isEmpty()) {
-            root = st1.pop();
-            st2.add(root);
-            if (root.left != null)
-                st1.push(root.left);
-            if (root.right != null)
-                st1.push(root.right);
-        }
-        while (!st2.isEmpty())
-            ans.add(st2.pop().val);
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode curr = root, lastVisited = null;
 
+        while (curr != null || !st.isEmpty()) {
+            while (curr != null) {
+                st.push(curr);
+                curr = curr.left;
+            }
+
+            TreeNode peek = st.peek();
+            if (peek.right != null && lastVisited != peek.right)
+                curr = peek.right;
+            else {
+                ans.add(peek.val);
+                lastVisited = st.pop();
+            }
+        }
         return ans;
     }
 }
-
-// class Solution {
-//     public List<Integer> postorderTraversal(TreeNode root) {
-
-//     }
-// }
