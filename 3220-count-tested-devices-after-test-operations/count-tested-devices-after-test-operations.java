@@ -13,7 +13,7 @@ class Solution {
 
     private void decrease(int[] arr, int index) {
         for (int i = index; i < arr.length; i++) {
-            arr[i] = arr[i] - 1;
+            arr[i] = Math.max(0, arr[i] - 1);
         }
     }
 }
