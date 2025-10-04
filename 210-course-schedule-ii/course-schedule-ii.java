@@ -17,10 +17,10 @@ class Solution {
                 if (!dfs(i, graph, visited, pathVisited, order))
                     return new int[0];
         }
-        Collections.reverse(order);
+
         int[] res = new int[order.size()];
         for (int i = 0; i < res.length; i++)
-            res[i] = order.get(i);
+            res[i] = order.get(order.size() - 1 - i);
 
         return res;
     }
