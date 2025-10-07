@@ -20,7 +20,7 @@ class Solution {
 
         for (int i = 0; i < n; i++) {
             if (inDegree[i] == 0)
-                q.add(i);
+                q.offer(i);
         }
         while (!q.isEmpty()) {
             int node = q.poll();
@@ -28,7 +28,7 @@ class Solution {
             for (int it : revGraph.get(node)) {
                 inDegree[it]--;
                 if (inDegree[it] == 0)
-                    q.add(it);
+                    q.offer(it);
             }
         }
         Collections.sort(ans);
