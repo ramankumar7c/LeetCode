@@ -15,7 +15,7 @@ class Solution {
             }
         }
 
-        Queue<Integer> q = new LinkedList<>();
+        Queue<Integer> q = new ArrayDeque<>();
         List<Integer> ans = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
