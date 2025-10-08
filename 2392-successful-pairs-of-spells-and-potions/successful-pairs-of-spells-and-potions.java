@@ -8,7 +8,7 @@ class Solution {
         for (int i = 0; i < n; i++) {
             int left = 0, right = m;
             while (left < right) {
-                int mid = left + (right - left) / 2;
+                int mid = (left + right) / 2;
                 if ((long) spells[i] * potions[mid] >= success)
                     right = mid;
                 else
