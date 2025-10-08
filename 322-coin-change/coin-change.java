@@ -1,22 +1,30 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        if (amount == 0)
-            return 0;
-        if (coins == null || coins.length == 0)
-            return -1;
-
-        int INF = amount + 1;
         int[] dp = new int[amount + 1];
-        Arrays.fill(dp, INF);
-        dp[0] = 0;
+        Arrays.fill(dp, -2);
 
-        for (int a = 1; a <= amount; a++) {
-            for (int coin : coins) {
-                if (coin <= a) {
-                    dp[a] = Math.min(dp[a], dp[a - coin] + 1);
-                }
-            }
+        int result = dfs(coins, amount, dp);
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+
+    private int dfs(int[] coins, int rem, int[] dp) {
+
+        if (rem == 0)
+            return 0;
+        if (rem < 0)
+            return Integer.MAX_VALUE;
+
+        if (dp[rem] != -2)
+            return dp[rem];
+
+        int minCoins = Integer.MAX_VALUE;
+        for (int coin : coins) {
+            int res = dfs(coins, rem - coin, dp);
+            if (res != Integer.MAX_VALUE)
+                minCoins = Math.min(minCoins, 1 + res);
         }
-        return dp[amount] > amount ? -1 : dp[amount];
+
+        dp[rem] = minCoins;
+        return minCoins;
     }
 }
