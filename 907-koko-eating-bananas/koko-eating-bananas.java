@@ -1,7 +1,7 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         int l = 1;
-        int r = getMaxPile(piles);
+        int r = Arrays.stream(piles).max().getAsInt();
 
         while (l < r) {
             int m = (l + r) / 2;
@@ -19,14 +19,5 @@ class Solution {
             hours += (pile + m - 1) / m;
 
         return hours;
-    }
-
-    private int getMaxPile(int[] piles) {
-        int max = piles[0];
-        for (int pile : piles)
-            if (pile > max)
-                max = pile;
-
-        return max;
     }
 }
