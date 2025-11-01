@@ -7,7 +7,7 @@ class Solution {
 
         int leastSum = Integer.MAX_VALUE;
         List<String> ansList = new ArrayList<>();
-        for (int i = 0; i < list2.length; i++) {
+        for (int i = 0; i < list2.length && i <= leastSum; i++) {
             if (map1.containsKey(list2[i])) {
                 int currSum = i + map1.get(list2[i]);
                 if (currSum < leastSum) {
