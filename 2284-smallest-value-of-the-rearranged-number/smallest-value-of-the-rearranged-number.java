@@ -3,23 +3,22 @@ class Solution {
         String digits = String.valueOf(Math.abs(num));
         char[] ch = digits.toCharArray();
         Arrays.sort(ch);
-        String s = new String(ch);
 
-        StringBuilder sb = new StringBuilder(s);
+        StringBuilder sb = new StringBuilder(String.valueOf(ch));
 
         if (num <= 0)
             return -1 * Long.parseLong(sb.reverse().toString());
 
         if (sb.charAt(0) == '0') {
-            int firstNonZeroIndex = -1;
-            for (int i = 0; i < sb.length(); i++) {
-                if (sb.charAt(i) != '0') {
-                    firstNonZeroIndex = i;
-                    break;
-                }
+            int i = 1;
+
+            while (i < sb.length() && sb.charAt(i) == '0') {
+                i++;
             }
-            sb.setCharAt(0, sb.charAt(firstNonZeroIndex));
-            sb.setCharAt(firstNonZeroIndex, '0');
+
+            char c = sb.charAt(i);
+            sb.setCharAt(0, c);
+            sb.setCharAt(i, '0');
         }
 
         return Long.parseLong(sb.toString());
