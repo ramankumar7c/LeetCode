@@ -16,9 +16,11 @@ class Solution {
                 i++;
             }
 
-            char c = sb.charAt(i);
-            sb.setCharAt(0, c);
-            sb.setCharAt(i, '0');
+            if (i < sb.length()) {
+                char c = sb.charAt(i);
+                sb.setCharAt(0, c);
+                sb.setCharAt(i, '0');
+            }
         }
 
         return Long.parseLong(sb.toString());
