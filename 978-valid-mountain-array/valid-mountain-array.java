@@ -4,7 +4,7 @@ class Solution {
             return false;
 
         int l = 0, r = arr.length - 1;
-        while (l < r && arr[l + 1] > arr[l])
+        while (l < arr.length - 1 && arr[l + 1] > arr[l])
             l++;
         while (r > 0 && arr[r] < arr[r - 1])
             r--;
