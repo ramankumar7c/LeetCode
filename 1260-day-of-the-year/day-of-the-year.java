@@ -6,7 +6,6 @@ class Solution {
         int month = Integer.parseInt(date.substring(5, 7));
         int day = Integer.parseInt(date.substring(8));
 
-        int ans = 0;
         for (int i = 0; i < month - 1; i++)
             day += DAYS[i];
 
