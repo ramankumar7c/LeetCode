@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one">1520. Number of Steps to Reduce a Number in Binary Representation to One</a></h2><h3>Medium</h3><hr><p>Given the binary representation of an integer as a string <code>s</code>, return <em>the number of steps to reduce it to </em><code>1</code><em> under the following rules</em>:</p>
+<h2><a href="https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one">Number of Steps to Reduce a Number in Binary Representation to One</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>Given the binary representation of an integer as a string <code>s</code>, return <em>the number of steps to reduce it to </em><code>1</code><em> under the following rules</em>:</p>
 
 <ul>
 	<li>
