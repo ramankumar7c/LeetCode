@@ -1,41 +1,35 @@
 class Solution {
     public int[] sortArray(int[] nums) {
-        heapSort(nums);
+        mergeSort(nums, 0, nums.length - 1);
         return nums;
     }
 
-    private void heapSort(int[] A) {
-        buildMaxHeap(A);
-        int heapSize = A.length;
-        for (int i = A.length - 1; i > 0; --i) {
-            swap(A, i, 0);
-            --heapSize;
-            maxHeapify(A, 0, heapSize);
+    private void mergeSort(int[] nums, int left, int right) {
+        if (left >= right)
+            return;
+
+        int mid = left + (right - left) / 2;
+        mergeSort(nums, left, mid);
+        mergeSort(nums, mid + 1, right);
+        merge(nums, left, mid, right);
+    }
+
+    private void merge(int[] nums, int left, int mid, int right) {
+        int[] temp = new int[right - left + 1];
+        int i = left, j = mid + 1, k = 0;
+
+        while (i <= mid && j <= right) {
+            if (nums[i] <= nums[j])
+                temp[k++] = nums[i++];
+            else
+                temp[k++] = nums[j++];
         }
-    }
+        while (i <= mid)
+            temp[k++] = nums[i++];
+        while (j <= right)
+            temp[k++] = nums[j++];
 
-    private void buildMaxHeap(int[] A) {
-        for (int i = A.length / 2; i >= 0; --i)
-            maxHeapify(A, i, A.length);
-    }
-
-    private void maxHeapify(int[] A, int i, int heapSize) {
-        final int l = 2 * i + 1;
-        final int r = 2 * i + 2;
-        int largest = i;
-        if (l < heapSize && A[largest] < A[l])
-            largest = l;
-        if (r < heapSize && A[largest] < A[r])
-            largest = r;
-        if (largest != i) {
-            swap(A, largest, i);
-            maxHeapify(A, largest, heapSize);
-        }
-    }
-
-    private void swap(int[] A, int i, int j) {
-        final int temp = A[i];
-        A[i] = A[j];
-        A[j] = temp;
+        for (int x = 0; x < temp.length; x++)
+            nums[left + x] = temp[x];
     }
 }
