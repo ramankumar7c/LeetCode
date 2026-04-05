@@ -8,7 +8,7 @@ class Solution {
                 countX--;
             else if (c == 'U')
                 countY++;
-            else
+            else if (c == 'D')
                 countY--;
         }
         return countX == 0 && countY == 0;
